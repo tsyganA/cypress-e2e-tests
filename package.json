@@ -1,0 +1,21 @@
+{
+  "name": "cypress-e2e-tests",
+  "version": "1.0.0",
+  "description": "E2E tests for fufelka.ru - login and profile avatar management",
+  "scripts": {
+    "test:e2e": "cypress run",
+    "test:e2e:headed": "cypress run --headed",
+    "cypress:open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^13.16.0"
+  },
+  "keywords": [
+    "cypress",
+    "e2e",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+

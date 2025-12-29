@@ -1,0 +1,16 @@
+{
+  "credentials": {
+    "username": "Ochko228",
+    "password": "Zxcvbn"
+  },
+  "avatarFile": "avatar.jpg",
+  "endpoints": {
+    "auth": "**/api/auth/**",
+    "login": "**/api/login**",
+    "session": "**/api/session**",
+    "profile": "**/api/profile**",
+    "upload": "**/api/upload**",
+    "avatar": "**/avatar**"
+  }
+}
+
