@@ -2,9 +2,8 @@
 node_modules/
 
 # Cypress artifacts
-cypress/videos/
-cypress/screenshots/
 cypress/downloads/
+# Note: videos/ and screenshots/ are committed to show test results
 
 # Logs
 *.log
