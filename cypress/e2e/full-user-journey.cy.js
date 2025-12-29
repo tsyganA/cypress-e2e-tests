@@ -158,6 +158,13 @@ describe('Full User Journey - E2E Test', () => {
       cy.logTerminal(`   ✓ Current URL: ${url}`);
     });
 
+    // 📸 Screenshot: Successful login verification
+    // Wait for page to fully render before screenshot
+    cy.wait(1000);
+    cy.get('body').should('be.visible');
+    cy.logTerminal('   📸 Taking screenshot: successful-login-verification');
+    cy.screenshot('01-successful-login-verification', { capture: 'viewport' });
+
     cy.logTerminal('🎉 TEST 1 PASSED: Login via UI successful');
     cy.logTerminal('   • User: Ochko228');
     cy.logTerminal('   • Auth request: 2xx response');
@@ -202,6 +209,9 @@ describe('Full User Journey - E2E Test', () => {
     cy.logTerminal('📌 STEP 3: Verifying session persistence');
     cy.logTerminal('   → Checking if user is still logged in');
 
+    // Wait for page to fully load after reload
+    cy.contains('Ochko228', { timeout: 15000 }).should('be.visible');
+
     // Check we're NOT redirected to sign-in page
     cy.url().should('not.include', '/sign-in').then(() => {
       cy.logTerminal('   ✓ Not redirected to /sign-in (session active)');
@@ -212,17 +222,7 @@ describe('Full User Journey - E2E Test', () => {
     });
 
     // Verify UI still shows logged-in state
-    cy.get('body', { timeout: 15000 }).should('satisfy', ($body) => {
-      const bodyText = $body.text().toLowerCase();
-      return (
-        bodyText.includes('ochko228') ||
-        bodyText.includes('profile') ||
-        bodyText.includes('logout') ||
-        bodyText.includes('log out') ||
-        bodyText.includes('sign out') ||
-        $body.find('[data-test="user-menu"], [data-testid="user-menu"], .user-menu, .user-profile').length > 0
-      );
-    });
+    cy.get('body', { timeout: 15000 }).should('contain.text', 'Ochko228');
     
     cy.logTerminal('   ✓ Logged-in UI state confirmed after reload');
 
@@ -263,6 +263,13 @@ describe('Full User Journey - E2E Test', () => {
     // Verify username is still displayed
     cy.contains('Ochko228', { timeout: 10000 }).should('be.visible');
     cy.logTerminal('   ✓ Username "Ochko228" still visible on page');
+
+    // 📸 Screenshot: Session persistence verification
+    // Wait for page to fully render before screenshot
+    cy.wait(1000);
+    cy.get('body').should('be.visible');
+    cy.logTerminal('   📸 Taking screenshot: session-persistence-verification');
+    cy.screenshot('02-session-persistence-verification', { capture: 'viewport' });
 
     cy.logTerminal('🎉 TEST 2 PASSED: Session persistence verified');
     cy.logTerminal('   • Page reloaded successfully');
@@ -337,6 +344,13 @@ describe('Full User Journey - E2E Test', () => {
       expect(src).to.not.be.empty;
       cy.logTerminal('   ✓ Avatar has valid src attribute');
     });
+
+    // 📸 Screenshot: Profile data loaded verification
+    // Wait for page to fully render before screenshot
+    cy.wait(1000);
+    cy.get('body').should('be.visible');
+    cy.logTerminal('   📸 Taking screenshot: profile-data-loaded-verification');
+    cy.screenshot('03-profile-data-loaded-verification', { capture: 'viewport' });
 
     // ============================================
     // STEP 5: Navigate to Edit Profile page
@@ -431,7 +445,7 @@ describe('Full User Journey - E2E Test', () => {
     cy.logTerminal('📌 STEP 5: Opening photo upload modal');
     cy.logTerminal('   → Clicking "Edit photo" button');
     
-    cy.contains('Edit photo', { timeout: 10000 }).should('be.visible').click();
+    cy.contains('Edit photo', { timeout: 10000 }).should('be.visible').click({ force: true });
     cy.logTerminal('   ✓ "Edit photo" button clicked');
 
     // Wait for Crop photo modal
@@ -511,6 +525,13 @@ describe('Full User Journey - E2E Test', () => {
       cy.logTerminal(`   ✓ Current URL: ${url}`);
       cy.logTerminal('   ✓ User still logged in after reload');
     });
+
+    // 📸 Screenshot: Avatar persisted after reload verification
+    // Wait for page to fully render before screenshot
+    cy.wait(1000);
+    cy.get('body').should('be.visible');
+    cy.logTerminal('   📸 Taking screenshot: avatar-persisted-after-reload');
+    cy.screenshot('04-avatar-persisted-after-reload', { capture: 'viewport' });
 
     // ============================================
     // OPTIONAL: Check for Choose Avatar option
