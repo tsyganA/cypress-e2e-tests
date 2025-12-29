@@ -159,8 +159,6 @@ describe('Full User Journey - E2E Test', () => {
     });
 
     // 📸 Screenshot: Successful login verification
-    // Wait for page to fully render before screenshot
-    cy.wait(1000);
     cy.get('body').should('be.visible');
     cy.logTerminal('   📸 Taking screenshot: successful-login-verification');
     cy.screenshot('01-successful-login-verification', { capture: 'viewport' });
@@ -265,8 +263,6 @@ describe('Full User Journey - E2E Test', () => {
     cy.logTerminal('   ✓ Username "Ochko228" still visible on page');
 
     // 📸 Screenshot: Session persistence verification
-    // Wait for page to fully render before screenshot
-    cy.wait(1000);
     cy.get('body').should('be.visible');
     cy.logTerminal('   📸 Taking screenshot: session-persistence-verification');
     cy.screenshot('02-session-persistence-verification', { capture: 'viewport' });
@@ -346,8 +342,6 @@ describe('Full User Journey - E2E Test', () => {
     });
 
     // 📸 Screenshot: Profile data loaded verification
-    // Wait for page to fully render before screenshot
-    cy.wait(1000);
     cy.get('body').should('be.visible');
     cy.logTerminal('   📸 Taking screenshot: profile-data-loaded-verification');
     cy.screenshot('03-profile-data-loaded-verification', { capture: 'viewport' });
@@ -527,8 +521,6 @@ describe('Full User Journey - E2E Test', () => {
     });
 
     // 📸 Screenshot: Avatar persisted after reload verification
-    // Wait for page to fully render before screenshot
-    cy.wait(1000);
     cy.get('body').should('be.visible');
     cy.logTerminal('   📸 Taking screenshot: avatar-persisted-after-reload');
     cy.screenshot('04-avatar-persisted-after-reload', { capture: 'viewport' });
